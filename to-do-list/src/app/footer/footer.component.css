@@ -1,0 +1,18 @@
+.reset-p {
+ margin: 0;
+}
+
+.footer-display {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 50px;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+}
+
+.colors {
+  background-color: blue;
+  color: white;
+}
