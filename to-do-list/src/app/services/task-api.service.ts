@@ -22,7 +22,10 @@ export class TaskApiService {
 
   getTasks(): Observable<Task> {
     return this.http.get<Task>(`${this.apiUrl}/tasks`)
-      .pipe(retry(1), catchError(this.handleError))
+      .pipe(
+        retry(1), 
+        catchError(this.handleError)
+      )
   }
 
   handleError(error) {
