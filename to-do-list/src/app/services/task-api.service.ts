@@ -27,6 +27,13 @@ export class TaskApiService {
         catchError(this.handleError)
       )
   }
+  createTask(task): Observable<Task> {
+    return this.http.post<Task>(this.apiUrl + '/tasks', JSON.stringify(task), this.httpHeaders)
+    .pipe(
+      retry(1),
+      catchError(this.handleError)
+    )
+  }
 
   handleError(error) {
     let errorMessage = '';
