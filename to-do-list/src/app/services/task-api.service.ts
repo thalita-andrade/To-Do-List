@@ -20,6 +20,13 @@ export class TaskApiService {
     })
   }
 
+  getTasks(): Observable<Task> {
+    return this.http.get<Task>(`${this.apiUrl}/tasks`)
+      .pipe(
+        retry(1), 
+        catchError(this.handleError)
+      )
+  }
   createTask(task): Observable<Task> {
     return this.http.post<Task>(this.apiUrl + '/tasks', JSON.stringify(task), this.httpHeaders)
     .pipe(

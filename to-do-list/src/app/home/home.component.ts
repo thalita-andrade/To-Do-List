@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { TaskApiService } from '../services/task-api.service';
+
 
 @Component({
   selector: 'app-home',
@@ -7,9 +9,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
 
-  constructor() { }
+  tasks: any = [];
+
+  constructor( private taskApiService: TaskApiService) { }
 
   ngOnInit(): void {
+    this.loadTasks();
+  }
+
+  loadTasks() {
+    this.taskApiService.getTasks().subscribe((data: {}) => {
+      this.tasks = data;
+    })
   }
 
 }
