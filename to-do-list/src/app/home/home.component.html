@@ -1,9 +1,9 @@
 <section class="display-section-home">
-  <div>
+  <div *ngIf="tasks.length == 0">
     <h1>Cadastre sua primeira tarefa!!</h1>
   </div>
 
-  <div>
+  <div *ngIf="tasks.length !== 0">
     <table>
       <tr>
         <th>Título</th>
@@ -13,12 +13,13 @@
         <th>Editar</th>
         <th>Excluir</th>
       </tr>
-      <tr>
-        <td>Teste Tarefa</td>
-        <td>Blá blá blá</td>
-        <td>Jéssica e Thalita</td>
-        <td>Em amdamento</td>
-        <td>icon</td>
+      <tr *ngFor="let task of tasks">
+        <td>{{task.title}}</td>
+        <td>{{task.description}}</td>
+        <td>{{task.name}}</td>
+        <td>{{task.status}}</td>
+        <!-- aplicar routerlink com :id para o edit routerLink="/form/{{task.id}}  e função click para delete -->
+        <td>icon</td> 
         <td>icon</td>
       </tr>
     </table>
