@@ -10,6 +10,7 @@ import { TaskApiService } from '../services/task-api.service';
 export class HomeComponent implements OnInit {
 
   tasks: any = [];
+  
 
   constructor( private taskApiService: TaskApiService) { }
 
@@ -18,9 +19,17 @@ export class HomeComponent implements OnInit {
   }
 
   loadTasks() {
-    this.taskApiService.getTasks().subscribe((data: {}) => {
+    return this.taskApiService.getTasks().subscribe((data: {}) => {
       this.tasks = data;
     })
+  }
+
+  deleteTask(id) {
+    if (window.confirm("Você deseja excluir?")) {
+      this.taskApiService.deleteTask(id).subscribe(data => {
+        this.loadTasks();
+      })
+    }
   }
 
 }

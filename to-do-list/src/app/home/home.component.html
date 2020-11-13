@@ -19,7 +19,7 @@
         <td>{{task.name}}</td>
         <td>{{task.status}}</td>
         <td><span routerLink="/edit/{{task.id}}">Edit</span></td> 
-        <td>Del</td>
+        <td><span (click)="deleteTask(task.id)">Del</span></td>
       </tr>
     </table>
   </div>

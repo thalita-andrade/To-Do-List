@@ -51,6 +51,14 @@ export class TaskApiService {
     )
   }
 
+  deleteTask(id): Observable<Task> {
+    return this.http.delete<Task>(this.apiUrl + '/tasks/' + id, this.httpHeaders)
+    .pipe(
+      retry(1),
+      catchError(this.handleError)
+    )
+  }
+
   handleError(error) {
     let errorMessage = '';
     if (error.error instanceof ErrorEvent) {
