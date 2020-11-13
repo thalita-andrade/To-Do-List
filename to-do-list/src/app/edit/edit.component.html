@@ -1,19 +1,19 @@
 <div class="container">
     <div class="form-container">
         <label class="title-label">Nome:</label>
-        <input type="text" class="input-form" [(ngModel)]="taskDetails.name"/>
+        <input type="text" class="input-form" [(ngModel)]="taskUpdate.name"/>
 
         <label class="title-label">E-mail:</label>
-        <input type="email" class="input-form" [(ngModel)]="taskDetails.email"/>
+        <input type="email" class="input-form" [(ngModel)]="taskUpdate.email"/>
         
         <label class="title-label">Título da tarefa:</label>
-        <input title="text" class="input-form" [(ngModel)]="taskDetails.title"/>
+        <input title="text" class="input-form" [(ngModel)]="taskUpdate.title"/>
 
         <label class="title-label">Descrição:</label>
-        <textarea class="textarea-form" [(ngModel)]="taskDetails.description"></textarea>
+        <textarea class="textarea-form" [(ngModel)]="taskUpdate.description"></textarea>
 
         <label class="title-label">Status:</label>
-        <select class="select-form" [(ngModel)]="taskDetails.status">
+        <select class="select-form" [(ngModel)]="taskUpdate.status">
             <option value="pendente">Pendente</option>
             <option value="concluida">Concluída</option>
         </select>
@@ -21,7 +21,8 @@
         <div class="buttons">
             <button class="link-form button-form" routerLink="/" >Cancelar</button>
 
-            <button class="button-form" (click)="addTask()">Criar</button>
+            <button class="button-form" (click)="updateTask()">Salvar</button>
         </div>
     </div>
 </div>
+

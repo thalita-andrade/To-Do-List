@@ -9,13 +9,12 @@ import { ComponentRoute } from './app-routing.module';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 
-
 @NgModule({
   declarations: [
     AppComponent,
     FooterComponent,
     HeaderComponent,
-    ComponentRoute
+    ComponentRoute,
   ],
   imports: [
     BrowserModule,
@@ -27,4 +26,5 @@ import { FormsModule } from '@angular/forms';
   providers: [],
   bootstrap: [AppComponent]
 })
+
 export class AppModule { }

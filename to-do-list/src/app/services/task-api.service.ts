@@ -20,6 +20,14 @@ export class TaskApiService {
     })
   }
 
+  getTask(id): Observable<Task>{
+    return this.http.get<Task>(`${this.apiUrl}/tasks/${id}`)
+      .pipe(
+        retry(1), 
+        catchError(this.handleError)
+      )
+  }
+
   getTasks(): Observable<Task> {
     return this.http.get<Task>(`${this.apiUrl}/tasks`)
       .pipe(
@@ -29,6 +37,14 @@ export class TaskApiService {
   }
   createTask(task): Observable<Task> {
     return this.http.post<Task>(this.apiUrl + '/tasks', JSON.stringify(task), this.httpHeaders)
+    .pipe(
+      retry(1),
+      catchError(this.handleError)
+    )
+  }
+
+  updateTask(id, task): Observable<Task> {
+    return this.http.put<Task>(this.apiUrl + '/tasks/' + id, JSON.stringify(task), this.httpHeaders)
     .pipe(
       retry(1),
       catchError(this.handleError)

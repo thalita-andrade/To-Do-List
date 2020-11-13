@@ -6,7 +6,7 @@
       "email": "teste@teste.com",
       "title": "teste",
       "description": "teste",
-      "status": "teste"
+      "status": "concluida"
     },
     {
       "name": "",
@@ -47,6 +47,14 @@
       "description": "Task",
       "status": "pendente",
       "id": 6
+    },
+    {
+      "name": "Melise",
+      "email": "melise@gmail.com",
+      "title": "Task One",
+      "description": "ldjasdsadfdfsdfsdfsdfsdf",
+      "status": "concluida",
+      "id": 7
     }
   ]
 }
