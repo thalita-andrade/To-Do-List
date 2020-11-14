@@ -5,6 +5,28 @@
   padding-top: 20px;
 }
 
+.display-table-home {
+  width: 80%;
+  display: flex;
+  flex-direction: column;
+}
+
+table {
+  box-shadow: 0px 3px 1px -2px rgba(0, 0, 0, 0.2), 
+              0px 2px 2px 0px rgba(0, 0, 0, 0.14), 
+              0px 1px 5px 0px rgba(0, 0, 0, 0.12);
+}
+
+th {
+  font-size: 18px;
+  background-color: #8675b8;
+  color: white;
+}
+
+h2 {
+  color: #6142bd;
+}
+
 .button-home {
   background-color: #8675b8;
   color: white;

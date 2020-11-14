@@ -14,6 +14,8 @@ export class HomeComponent implements OnInit {
   constructor( public taskApiService: TaskApiService) {  }
 
   dataSource: Task[];
+  dataPending: Task[];
+  dataConclude: Task[]
 
   ngOnInit() { 
     this.loadTasks()
@@ -21,7 +23,19 @@ export class HomeComponent implements OnInit {
 
   loadTasks() {
     return this.taskApiService.getTasks().subscribe(data => {
+      let pending = data.filter(item => {
+        if(item.status == "pendente") {
+          return item;
+        }
+      })
+      let conclude = data.filter(item => {
+        if(item.status == "concluida") {
+          return item;
+        }
+      })
       this.dataSource = data;
+      this.dataPending = pending;
+      this.dataConclude = conclude;
     })
   }
 
