@@ -14,17 +14,22 @@ export class HomeComponent implements OnInit {
 
   displayedColumns: string[] = ["name", "title", "description", "status", "edit", "delete"];
   
-  constructor( private taskApiService: TaskApiService) { }
+  constructor( private taskApiService: TaskApiService) {  }
 
-  dataSource = new TaskDataSource(this.taskApiService);
+  // dataSource = new TaskDataSource(this.taskApiService);
+  dataSource: Task[];
 
-  ngOnInit(): void { }
+  async ngOnInit() { 
+    this.dataSource = await this.taskApiService.getTasks().toPromise();
+  }
 
-  deleteTask(id) {
+  async deleteTask(id) {
     if (window.confirm("Você deseja excluir?")) {
-      this.taskApiService.deleteTask(id).subscribe(data => {
-        this.dataSource = new TaskDataSource(this.taskApiService);
-      })
+      await this.taskApiService.deleteTask(id).toPromise();
+      this.dataSource = await this.taskApiService.getTasks().toPromise();
+      // this.taskApiService.deleteTask(id).subscribe(data => {
+      //   this.dataSource = new TaskDataSource(this.taskApiService);
+      // })
     }
   }
 
@@ -35,8 +40,14 @@ export class TaskDataSource extends DataSource<Task> {
     super();
   }
 
+  isEmpty = false;
+
   connect(): Observable<Task[]> {
-    return this.taskApiService.getTasks();
+    let observble = this.taskApiService.getTasks();
+    observble.subscribe((data) => {
+      this.isEmpty = data.length == 0;
+    })
+    return observble
   }
 
   disconnect() { }

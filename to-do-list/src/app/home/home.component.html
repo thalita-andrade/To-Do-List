@@ -1,9 +1,9 @@
 <section class="display-section-home">
-  <div *ngIf="dataSource.length === 0">
+  <div *ngIf="!dataSource || !dataSource.length">
     <h1>Cadastre sua primeira tarefa!!</h1>
   </div>
 
-  <div *ngIf="dataSource.length !== 0">
+  <div *ngIf="dataSource && dataSource.length">
     <table mat-table [dataSource]="dataSource">
       <ng-container matColumnDef="title">
         <th mat-header-cell *matHeaderCellDef>Título</th>
