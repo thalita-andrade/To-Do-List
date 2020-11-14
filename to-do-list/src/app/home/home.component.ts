@@ -1,9 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Task } from '../models/task';
 import { TaskApiService } from '../services/task-api.service';
-import { DataSource } from '@angular/cdk/table';
-import { Observable } from 'rxjs';
-
 
 @Component({
   selector: 'app-home',
@@ -14,42 +11,27 @@ export class HomeComponent implements OnInit {
 
   displayedColumns: string[] = ["name", "title", "description", "status", "edit", "delete"];
   
-  constructor( private taskApiService: TaskApiService) {  }
+  constructor( public taskApiService: TaskApiService) {  }
 
-  // dataSource = new TaskDataSource(this.taskApiService);
   dataSource: Task[];
 
-  async ngOnInit() { 
-    this.dataSource = await this.taskApiService.getTasks().toPromise();
+  ngOnInit() { 
+    this.loadTasks()
   }
 
-  async deleteTask(id) {
+  loadTasks() {
+    return this.taskApiService.getTasks().subscribe(data => {
+      this.dataSource = data;
+    })
+  }
+
+  deleteTask(id) {
     if (window.confirm("Você deseja excluir?")) {
-      await this.taskApiService.deleteTask(id).toPromise();
-      this.dataSource = await this.taskApiService.getTasks().toPromise();
-      // this.taskApiService.deleteTask(id).subscribe(data => {
-      //   this.dataSource = new TaskDataSource(this.taskApiService);
-      // })
+      this.taskApiService.deleteTask(id).subscribe(data => {
+        this.loadTasks();
+      })
     }
   }
 
 }
 
-export class TaskDataSource extends DataSource<Task> {
-  constructor(private taskApiService: TaskApiService) {
-    super();
-  }
-
-  isEmpty = false;
-
-  connect(): Observable<Task[]> {
-    let observble = this.taskApiService.getTasks();
-    observble.subscribe((data) => {
-      this.isEmpty = data.length == 0;
-    })
-    return observble
-  }
-
-  disconnect() { }
-
-}
