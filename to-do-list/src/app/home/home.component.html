@@ -27,36 +27,23 @@
 
       <ng-container matColumnDef="edit">
         <th mat-header-cell *matHeaderCellDef>Editar</th>
-        <td mat-cell *matCellDef="let element"><span routerLink="/edit/{{element.id}}">Editar</span></td>
+        <td mat-cell *matCellDef="let element">
+          <mat-icon routerLink="/edit/{{element.id}}" class="icons">edit</mat-icon>
+        </td>
       </ng-container>
 
       <ng-container matColumnDef="delete">
         <th mat-header-cell *matHeaderCellDef>Excluir</th>
-        <td mat-cell *matCellDef="let element"><span (click)="deleteTask(element.id)">Del</span></td>
+        <td mat-cell *matCellDef="let element">
+          <mat-icon (click)="deleteTask(element.id)" class="icons">delete</mat-icon>
+        </td>
       </ng-container>
     
       <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
       <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-      <!-- <tr>
-        <th>Título</th>
-        <th>Descrição</th>
-        <th>Responsável</th>
-        <th>Status</th>
-        <th>Editar</th>
-        <th>Excluir</th>
-      </tr>
-      <tr *ngFor="let task of tasks">
-        <td>{{task.title}}</td>
-        <td>{{task.description}}</td>
-        <td>{{task.name}}</td>
-        <td>{{task.status}}</td>
-        <td><span routerLink="/edit/{{task.id}}">Edit</span></td> 
-        <td><span (click)="deleteTask(task.id)">Del</span></td>
-      </tr> -->
     </table>
   </div>
 
- 
-  <button type="button" class="button-home" routerLink="/form">Cadastrar</button>
+  <button mat-raised-button type="button" class="button-home" routerLink="/form">Cadastrar</button>
   
 </section>

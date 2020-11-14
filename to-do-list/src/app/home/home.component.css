@@ -8,15 +8,14 @@
 .button-home {
   background-color: #8675b8;
   color: white;
-  border: none;
-  width: 90px;
-  height: 40px;
-  border-radius: 7px;
-  box-shadow: 3px 3px 8px darkgray;
-  cursor: pointer;
   font-size: 18px;
 }
 
 .button-home:hover {
   background-color: #6142bd;
+}
+
+.icons {
+  cursor: pointer;
+  color: #6142bd;
 }

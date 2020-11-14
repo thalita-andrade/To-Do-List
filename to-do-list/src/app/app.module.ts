@@ -9,6 +9,8 @@ import { ComponentRoute } from './app-routing.module';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { MatTableModule } from '@angular/material/table';
+import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
 
 @NgModule({
   declarations: [
@@ -23,7 +25,9 @@ import { MatTableModule } from '@angular/material/table';
     BrowserAnimationsModule,
     HttpClientModule,
     FormsModule,
-    MatTableModule
+    MatTableModule,
+    MatButtonModule,
+    MatIconModule
   ],
   providers: [],
   bootstrap: [AppComponent]
