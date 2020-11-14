@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { Task } from '../models/task';
 import { TaskApiService } from '../services/task-api.service';
+import { DataSource } from '@angular/cdk/table';
+import { Observable } from 'rxjs';
 
 
 @Component({
@@ -9,27 +12,33 @@ import { TaskApiService } from '../services/task-api.service';
 })
 export class HomeComponent implements OnInit {
 
-  tasks: any = [];
+  displayedColumns: string[] = ["name", "title", "description", "status", "edit", "delete"];
   
-
   constructor( private taskApiService: TaskApiService) { }
 
-  ngOnInit(): void {
-    this.loadTasks();
-  }
+  dataSource = new TaskDataSource(this.taskApiService);
 
-  loadTasks() {
-    return this.taskApiService.getTasks().subscribe((data: {}) => {
-      this.tasks = data;
-    })
-  }
+  ngOnInit(): void { }
 
   deleteTask(id) {
     if (window.confirm("Você deseja excluir?")) {
       this.taskApiService.deleteTask(id).subscribe(data => {
-        this.loadTasks();
+        this.dataSource = new TaskDataSource(this.taskApiService);
       })
     }
   }
+
+}
+
+export class TaskDataSource extends DataSource<Task> {
+  constructor(private taskApiService: TaskApiService) {
+    super();
+  }
+
+  connect(): Observable<Task[]> {
+    return this.taskApiService.getTasks();
+  }
+
+  disconnect() { }
 
 }

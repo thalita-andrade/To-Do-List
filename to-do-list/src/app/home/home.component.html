@@ -1,11 +1,43 @@
 <section class="display-section-home">
-  <div *ngIf="tasks.length == 0">
+  <div *ngIf="dataSource.length === 0">
     <h1>Cadastre sua primeira tarefa!!</h1>
   </div>
 
-  <div *ngIf="tasks.length !== 0">
-    <table>
-      <tr>
+  <div *ngIf="dataSource.length !== 0">
+    <table mat-table [dataSource]="dataSource">
+      <ng-container matColumnDef="title">
+        <th mat-header-cell *matHeaderCellDef>Título</th>
+        <td mat-cell *matCellDef="let element">{{element.title}}</td>
+      </ng-container>
+    
+      <ng-container matColumnDef="description">
+        <th mat-header-cell *matHeaderCellDef>Descrição</th>
+        <td mat-cell *matCellDef="let element">{{element.description}}</td>
+      </ng-container>
+    
+      <ng-container matColumnDef="name">
+        <th mat-header-cell *matHeaderCellDef>Responsável</th>
+        <td mat-cell *matCellDef="let element">{{element.name}}</td>
+      </ng-container>
+    
+      <ng-container matColumnDef="status">
+        <th mat-header-cell *matHeaderCellDef>Status</th>
+        <td mat-cell *matCellDef="let element">{{element.status}}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="edit">
+        <th mat-header-cell *matHeaderCellDef>Editar</th>
+        <td mat-cell *matCellDef="let element"><span routerLink="/edit/{{element.id}}">Editar</span></td>
+      </ng-container>
+
+      <ng-container matColumnDef="delete">
+        <th mat-header-cell *matHeaderCellDef>Excluir</th>
+        <td mat-cell *matCellDef="let element"><span (click)="deleteTask(element.id)">Del</span></td>
+      </ng-container>
+    
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+      <!-- <tr>
         <th>Título</th>
         <th>Descrição</th>
         <th>Responsável</th>
@@ -20,7 +52,7 @@
         <td>{{task.status}}</td>
         <td><span routerLink="/edit/{{task.id}}">Edit</span></td> 
         <td><span (click)="deleteTask(task.id)">Del</span></td>
-      </tr>
+      </tr> -->
     </table>
   </div>
 
