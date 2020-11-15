@@ -41,3 +41,10 @@ h2 {
   cursor: pointer;
   color: #6142bd;
 }
+
+.display-filter-button {
+  width: 80%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}

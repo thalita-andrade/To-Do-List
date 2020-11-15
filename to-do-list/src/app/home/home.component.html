@@ -1,11 +1,18 @@
 <section class="display-section-home">
-  <div *ngIf="dataSource == undefined || dataSource == null || dataSource.length == 0">
+  <div *ngIf="dataSourceIsEmpty()">
     <h2>Cadastre sua primeira tarefa!!</h2>
   </div>
 
-  <div *ngIf="dataSource && dataSource.length !== 0" class="display-table-home">
+  <div class="display-filter-button">
+    <mat-form-field *ngIf="!dataSourceIsEmpty()">
+      <input matInput type="text" (keyup)="doFilter($event)" placeholder="Filtrar">
+    </mat-form-field>
+    <button mat-raised-button type="button" class="button-home" routerLink="/form">Cadastrar</button>
+  </div>
+
+  <div *ngIf="!dataSourceIsEmpty()" class="display-table-home">
     <h2>TAREFAS EM ABERTO</h2>
-    <table *ngIf="dataPending && dataPending.length !== 0" mat-table [dataSource]="dataPending">
+    <table *ngIf="filterTasks('pendente')" mat-table [dataSource]="filterTasks('pendente')">
       <ng-container matColumnDef="title">
         <th mat-header-cell *matHeaderCellDef>Título</th>
         <td mat-cell *matCellDef="let taskPending">{{taskPending.title}}</td>
@@ -42,7 +49,7 @@
     <br>
 
     <h2>TAREFAS CONCLUÍDAS</h2>
-    <table *ngIf="dataConclude && dataConclude.length !== 0" mat-table [dataSource]="dataConclude">
+    <table *ngIf="filterTasks('concluida')" mat-table [dataSource]="filterTasks('concluida')">
       <ng-container matColumnDef="title">
         <th mat-header-cell *matHeaderCellDef>Título</th>
         <td mat-cell *matCellDef="let taskConclude">{{taskConclude.title}}</td>
@@ -75,11 +82,6 @@
       <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
     </table>
   </div>
-
-  <br>
-  <br>
-
-  <button mat-raised-button type="button" class="button-home" routerLink="/form">Cadastrar</button>
   
   <br>
   
