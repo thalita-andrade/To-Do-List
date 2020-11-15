@@ -12,75 +12,78 @@
 
   <div *ngIf="!dataSourceIsEmpty()" class="display-table-home">
     <h2>TAREFAS EM ABERTO</h2>
-    <table *ngIf="filterTasks('pendente')" mat-table [dataSource]="filterTasks('pendente')">
-      <ng-container matColumnDef="title">
-        <th mat-header-cell *matHeaderCellDef>Título</th>
-        <td mat-cell *matCellDef="let taskPending">{{taskPending.title}}</td>
-      </ng-container>
-      <ng-container matColumnDef="description">
-        <th mat-header-cell *matHeaderCellDef>Descrição</th>
-        <td mat-cell *matCellDef="let taskPending">{{taskPending.description}}</td>
-      </ng-container>
-      <ng-container matColumnDef="name">
-        <th mat-header-cell *matHeaderCellDef>Responsável</th>
-        <td mat-cell *matCellDef="let taskPending">{{taskPending.name}}</td>
-      </ng-container>
-      <ng-container matColumnDef="status">
-        <th mat-header-cell *matHeaderCellDef>Status</th>
-        <td mat-cell *matCellDef="let taskPending">{{taskPending.status}}</td>
-      </ng-container>
-      <ng-container matColumnDef="edit">
-        <th mat-header-cell *matHeaderCellDef>Editar</th>
-        <td mat-cell *matCellDef="let taskPending">
-          <mat-icon routerLink="/edit/{{taskPending.id}}" class="icons">edit</mat-icon>
-        </td>
-      </ng-container>
-      <ng-container matColumnDef="delete">
-        <th mat-header-cell *matHeaderCellDef>Excluir</th>
-        <td mat-cell *matCellDef="let taskPending">
-          <mat-icon (click)="deleteTask(taskPending.id)" class="icons">delete</mat-icon>
-        </td>
-      </ng-container>
-      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-    </table>
+    <div class="table-container">
+      <table *ngIf="filterTasks('pendente')" mat-table [dataSource]="filterTasks('pendente')">
+        <ng-container matColumnDef="title">
+          <th mat-header-cell *matHeaderCellDef>Título</th>
+          <td mat-cell *matCellDef="let taskPending">{{taskPending.title}}</td>
+        </ng-container>
+        <ng-container matColumnDef="description">
+          <th mat-header-cell *matHeaderCellDef>Descrição</th>
+          <td mat-cell *matCellDef="let taskPending">{{taskPending.description}}</td>
+        </ng-container>
+        <ng-container matColumnDef="name">
+          <th mat-header-cell *matHeaderCellDef>Responsável</th>
+          <td mat-cell *matCellDef="let taskPending">{{taskPending.name}}</td>
+        </ng-container>
+        <ng-container matColumnDef="status">
+          <th mat-header-cell *matHeaderCellDef>Status</th>
+          <td mat-cell *matCellDef="let taskPending">{{taskPending.status}}</td>
+        </ng-container>
+        <ng-container matColumnDef="edit">
+          <th mat-header-cell *matHeaderCellDef>Editar</th>
+          <td mat-cell *matCellDef="let taskPending">
+            <mat-icon routerLink="/edit/{{taskPending.id}}" class="icons">edit</mat-icon>
+          </td>
+        </ng-container>
+        <ng-container matColumnDef="delete">
+          <th mat-header-cell *matHeaderCellDef>Excluir</th>
+          <td mat-cell *matCellDef="let taskPending">
+            <mat-icon (click)="deleteTask(taskPending.id)" class="icons">delete</mat-icon>
+          </td>
+        </ng-container>
+        <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+      </table>  
+    </div>
 
-    <br>
     <br>
 
     <h2>TAREFAS CONCLUÍDAS</h2>
-    <table *ngIf="filterTasks('concluida')" mat-table [dataSource]="filterTasks('concluida')">
-      <ng-container matColumnDef="title">
-        <th mat-header-cell *matHeaderCellDef>Título</th>
-        <td mat-cell *matCellDef="let taskConclude">{{taskConclude.title}}</td>
-      </ng-container>
-      <ng-container matColumnDef="description">
-        <th mat-header-cell *matHeaderCellDef>Descrição</th>
-        <td mat-cell *matCellDef="let taskConclude">{{taskConclude.description}}</td>
-      </ng-container>
-      <ng-container matColumnDef="name">
-        <th mat-header-cell *matHeaderCellDef>Responsável</th>
-        <td mat-cell *matCellDef="let taskConclude">{{taskConclude.name}}</td>
-      </ng-container>
-      <ng-container matColumnDef="status">
-        <th mat-header-cell *matHeaderCellDef>Status</th>
-        <td mat-cell *matCellDef="let taskConclude">{{taskConclude.status}}</td>
-      </ng-container>
-      <ng-container matColumnDef="edit">
-        <th mat-header-cell *matHeaderCellDef>Editar</th>
-        <td mat-cell *matCellDef="let taskConclude">
-          <mat-icon routerLink="/edit/{{taskConclude.id}}" class="icons">edit</mat-icon>
-        </td>
-      </ng-container>
-      <ng-container matColumnDef="delete">
-        <th mat-header-cell *matHeaderCellDef>Excluir</th>
-        <td mat-cell *matCellDef="let taskConclude">
-          <mat-icon (click)="deleteTask(taskConclude.id)" class="icons">delete</mat-icon>
-        </td>
-      </ng-container>
-      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-    </table>
+    <div class="table-container">
+      <table *ngIf="filterTasks('concluida')" mat-table [dataSource]="filterTasks('concluida')">
+        <ng-container matColumnDef="title">
+          <th mat-header-cell *matHeaderCellDef>Título</th>
+          <td mat-cell *matCellDef="let taskConclude">{{taskConclude.title}}</td>
+        </ng-container>
+        <ng-container matColumnDef="description">
+          <th mat-header-cell *matHeaderCellDef>Descrição</th>
+          <td mat-cell *matCellDef="let taskConclude">{{taskConclude.description}}</td>
+        </ng-container>
+        <ng-container matColumnDef="name">
+          <th mat-header-cell *matHeaderCellDef>Responsável</th>
+          <td mat-cell *matCellDef="let taskConclude">{{taskConclude.name}}</td>
+        </ng-container>
+        <ng-container matColumnDef="status">
+          <th mat-header-cell *matHeaderCellDef>Status</th>
+          <td mat-cell *matCellDef="let taskConclude">{{taskConclude.status}}</td>
+        </ng-container>
+        <ng-container matColumnDef="edit">
+          <th mat-header-cell *matHeaderCellDef>Editar</th>
+          <td mat-cell *matCellDef="let taskConclude">
+            <mat-icon routerLink="/edit/{{taskConclude.id}}" class="icons">edit</mat-icon>
+          </td>
+        </ng-container>
+        <ng-container matColumnDef="delete">
+          <th mat-header-cell *matHeaderCellDef>Excluir</th>
+          <td mat-cell *matCellDef="let taskConclude">
+            <mat-icon (click)="deleteTask(taskConclude.id)" class="icons">delete</mat-icon>
+          </td>
+        </ng-container>
+        <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+      </table>
+    </div>
   </div>
   
   <br>
