@@ -3,6 +3,7 @@ header {
     height: 80px;
     background-color: var(--default-primary);
     display: flex;
+    justify-content: space-between;
 }
 
 .page-title {
@@ -12,4 +13,17 @@ header {
     color: var(--default-quarternary);
     font-size: 30px;
     font-family: arial,sans-serif;
+}
+
+.contrast {
+    align-self: center;
+    padding-right: 20px;
+    color: var(--default-quarternary);
+    font-family: arial,sans-serif;
+    cursor: pointer;
+}
+
+.font-size-icon {
+    font-size: 35px;
+    margin-bottom: 5px;
 }
