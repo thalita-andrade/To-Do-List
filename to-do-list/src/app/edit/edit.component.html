@@ -1,28 +1,42 @@
 <div class="container">
-    <div class="form-container">
-        <label class="title-label">Nome:</label>
-        <input type="text" class="input-form" [(ngModel)]="taskUpdate.name"/>
 
-        <label class="title-label">E-mail:</label>
-        <input type="email" class="input-form" [(ngModel)]="taskUpdate.email"/>
-        
-        <label class="title-label">Título da tarefa:</label>
-        <input title="text" class="input-form" [(ngModel)]="taskUpdate.title"/>
+    <h2 class="title-form">EDITAR TAREFA</h2>
 
-        <label class="title-label">Descrição:</label>
-        <textarea class="textarea-form" [(ngModel)]="taskUpdate.description"></textarea>
+    <mat-card class="form-container">
+        <mat-form-field class="input-form">
+            <mat-label>Nome</mat-label>
+            <input type="text" matInput [(ngModel)]="taskUpdate.name" />
+        </mat-form-field>
 
-        <label class="title-label">Status:</label>
-        <select class="select-form" [(ngModel)]="taskUpdate.status">
-            <option value="pendente">Pendente</option>
-            <option value="concluida">Concluída</option>
-        </select>
+        <mat-form-field class="input-form">
+            <mat-label>Email</mat-label>
+            <input type="email" matInput [(ngModel)]="taskUpdate.email" />
+        </mat-form-field>
 
-        <div class="buttons">
-            <button class="link-form button-form" routerLink="/" >Cancelar</button>
+        <mat-form-field class="input-form">
+            <mat-label>Título</mat-label>
+            <input type="text" matInput [(ngModel)]="taskUpdate.title" />
+        </mat-form-field>
 
-            <button class="button-form" (click)="updateTask()">Salvar</button>
-        </div>
+        <mat-form-field class="input-form">
+            <mat-label>Descrição</mat-label>
+            <textarea class="textarea-form" matInput [(ngModel)]="taskUpdate.description"></textarea>
+        </mat-form-field>
+
+        <mat-form-field class="select-form">
+            <mat-label>Status</mat-label>
+            <mat-select matNativeControl [(ngModel)]="taskUpdate.status">
+                <mat-option value="pendente">Pendente</mat-option>
+                <mat-option value="concluida">Concluída</mat-option>
+            </mat-select>
+        </mat-form-field>
+
+    </mat-card>
+
+    <div class="buttons">
+        <button class="button-form" mat-raised-button routerLink="/">Cancelar</button>
+
+        <button class="button-form" mat-raised-button (click)="updateTask()">Salvar</button>
     </div>
-</div>
 
+</div>
