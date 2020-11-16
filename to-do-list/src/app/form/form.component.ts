@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Router } from '@angular/router';
 import { TaskApiService } from '../services/task-api.service';
+import { FormControl, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-form',
@@ -26,4 +27,19 @@ export class FormComponent implements OnInit {
     })
   }
 
+  nameFormControl = new FormControl('', [
+    Validators.required,
+  ]);
+
+  titleFormControl = new FormControl('', [
+    Validators.required,
+  ]);
+
+  emailFormControl = new FormControl('', [
+    Validators.required,
+    Validators.email,
+  ]);
+
 }
+
+

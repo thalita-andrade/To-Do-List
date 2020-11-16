@@ -1,27 +1,64 @@
 <div class="container">
-    <div class="form-container">
-        <label class="title-label">Nome:</label>
-        <input type="text" class="input-form" [(ngModel)]="taskDetails.name"/>
 
-        <label class="title-label">E-mail:</label>
-        <input type="email" class="input-form" [(ngModel)]="taskDetails.email"/>
-        
-        <label class="title-label">Título da tarefa:</label>
-        <input title="text" class="input-form" [(ngModel)]="taskDetails.title"/>
+    <h2 class="title-form">NOVA TAREFA</h2>
+    
+    <mat-card class="form-container">
+        <mat-form-field class="input-form">
+            <mat-label>Nome</mat-label>
+            <input type="text" matInput [formControl]="nameFormControl" placeholder="Nome"
+                [(ngModel)]="taskDetails.name">
+            <mat-error *ngIf="nameFormControl.hasError('text') && !nameFormControl.hasError('required')">
+                Por favor insira seu nome
+            </mat-error>
+            <mat-error *ngIf="emailFormControl.hasError('required')">
+                Nome é <strong>obrigatório</strong>
+            </mat-error>
+        </mat-form-field>
 
-        <label class="title-label">Descrição:</label>
-        <textarea class="textarea-form" [(ngModel)]="taskDetails.description"></textarea>
+        <mat-form-field class="input-form">
+            <mat-label>Email</mat-label>
+            <input type="email" matInput [formControl]="emailFormControl" placeholder="Ex. pat@example.com"
+                [(ngModel)]="taskDetails.email">
+            <mat-error *ngIf="emailFormControl.hasError('email') && !emailFormControl.hasError('required')">
+                Por favor insira um endereço de e-mail válido
+            </mat-error>
+            <mat-error *ngIf="emailFormControl.hasError('required')">
+                Email é <strong>obrigatório</strong>
+            </mat-error>
+        </mat-form-field>
 
-        <label class="title-label">Status:</label>
-        <select class="select-form" [(ngModel)]="taskDetails.status">
-            <option value="pendente">Pendente</option>
-            <option value="concluida">Concluída</option>
-        </select>
+        <mat-form-field class="input-form">
+            <mat-label>Título da tarefa</mat-label>
+            <input type="text" matInput [formControl]="titleFormControl" placeholder="Reunião"
+                [(ngModel)]="taskDetails.title">
+            <mat-error *ngIf="titleFormControl.hasError('text') && !titleFormControl.hasError('required')">
+                Por favor insira o título da sua tarefa
+            </mat-error>
+            <mat-error *ngIf="emailFormControl.hasError('required')">
+                Título é <strong>obrigatório</strong>
+            </mat-error>
+        </mat-form-field>
 
-        <div class="buttons">
-            <button class="link-form button-form" routerLink="/" >Cancelar</button>
+        <mat-form-field class="input-form">
+            <mat-label>Descrição</mat-label>
+            <textarea type="text" matInput placeholder="Reunião no período da manhã"
+                [(ngModel)]="taskDetails.description"></textarea>
+        </mat-form-field>
 
-            <button class="button-form" (click)="addTask()">Criar</button>
-        </div>
+        <mat-form-field class="select-form">
+            <mat-label>Status</mat-label>
+            <mat-select matNativeControl [(ngModel)]="taskDetails.status">
+                <mat-option value="pendente">Pendente</mat-option>
+                <mat-option value="concluida">Concluída</mat-option>
+            </mat-select>
+        </mat-form-field>
+
+    </mat-card>
+
+    <div class="buttons">
+        <button mat-raised-button class="button-form" routerLink="/">Cancelar</button>
+
+        <button mat-raised-button class="button-form" (click)="addTask()">Criar</button>
     </div>
+
 </div>
