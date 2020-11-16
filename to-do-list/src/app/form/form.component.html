@@ -6,7 +6,7 @@
         <mat-form-field class="input-form">
             <mat-label>Nome</mat-label>
             <input type="text" matInput [formControl]="nameFormControl"
-                [(ngModel)]="taskDetails.name">
+                [(ngModel)]="taskDetails.name" required>
             <mat-error *ngIf="nameFormControl.hasError('text') && !nameFormControl.hasError('required')">
                 Por favor insira seu nome
             </mat-error>
@@ -18,7 +18,7 @@
         <mat-form-field class="input-form">
             <mat-label>Email</mat-label>
             <input type="email" matInput [formControl]="emailFormControl" placeholder="Ex. pat@example.com"
-                [(ngModel)]="taskDetails.email">
+                [(ngModel)]="taskDetails.email" required>
             <mat-error *ngIf="emailFormControl.hasError('email') && !emailFormControl.hasError('required')">
                 Por favor insira um endereço de e-mail válido
             </mat-error>
@@ -30,7 +30,7 @@
         <mat-form-field class="input-form">
             <mat-label>Título da tarefa</mat-label>
             <input type="text" matInput [formControl]="titleFormControl"
-                [(ngModel)]="taskDetails.title">
+                [(ngModel)]="taskDetails.title" required>
             <mat-error *ngIf="titleFormControl.hasError('text') && !titleFormControl.hasError('required')">
                 Por favor insira o título da sua tarefa
             </mat-error>
