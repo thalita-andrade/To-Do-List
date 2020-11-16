@@ -8,7 +8,7 @@
 .title-form {
     margin-top: 50px;
     margin-bottom: 20px;
-    color: #6142bd;
+    color: var(--default-senary);
 }
 
 .form-container {
@@ -36,14 +36,14 @@
 }
 
 .button-form {
-    background-color: #8675b8;
-    color: white;
+    background-color: var(--default-primary);
+    color: var(--default-quarternary);
     font-size: 18px;
     margin-right: 10px;
 }
     
 .button-form:hover {
-    background-color: #6142bd;
+    background-color: var(--default-secundary);
 }
 
 

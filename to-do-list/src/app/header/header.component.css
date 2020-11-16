@@ -1,15 +1,29 @@
 header {
     width: 100%;
     height: 80px;
-    background-color: #8675b8;
+    background-color: var(--default-primary);
     display: flex;
+    justify-content: space-between;
 }
 
 .page-title {
     display: flex;
     align-items: center;
     margin-left: 20px;
-    color: white;
+    color: var(--default-quarternary);
     font-size: 30px;
     font-family: arial,sans-serif;
+}
+
+.contrast {
+    align-self: center;
+    padding-right: 20px;
+    color: var(--default-quarternary);
+    font-family: arial,sans-serif;
+    cursor: pointer;
+}
+
+.font-size-icon {
+    font-size: 35px;
+    margin-bottom: 5px;
 }

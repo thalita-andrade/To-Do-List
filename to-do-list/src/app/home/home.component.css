@@ -19,41 +19,39 @@
 }
 
 table {
-  box-shadow: 0px 3px 1px -2px rgba(0, 0, 0, 0.2), 
-              0px 2px 2px 0px rgba(0, 0, 0, 0.14), 
-              0px 1px 5px 0px rgba(0, 0, 0, 0.12);
+  box-shadow: var(--default-shadow-table);
 }
 
 th {
   font-size: 18px;
-  background-color: #8675b8;
-  color: white;
+  background-color: var(--default-primary);
+  color: var(--default-quarternary);
 }
 
 h2 {
-  color: #6142bd;
+  color: var(--default-senary);
   margin: 0 0 8px;
 }
 
 .button-home {
-  background-color: #8675b8;
-  color: white;
+  background-color: var(--default-primary);
+  color: var(--default-quarternary);
   font-size: 18px;
 }
 
 .button-home:hover {
-  background-color: #6142bd;
+  background-color: var(--default-secundary);
 }
 
 .icons {
   cursor: pointer;
-  color: #6142bd;
+  color: var(--default-secundary);
 }
 
 .display-filter-button {
   width: 80%;
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   align-items: center;
 }
 
@@ -62,14 +60,14 @@ h2 {
 }
 
 ::-webkit-scrollbar-track {
-  box-shadow: inset 0 0 3px grey; 
+  box-shadow: var(--default-shadow-scrollbar);
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #beb0e7;
+  background: var(--default-tertiary);
   border-radius: 2px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #6142bd; 
+  background: var(--default-secundary); 
 }
