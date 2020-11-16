@@ -55,6 +55,13 @@ h2 {
   align-items: center;
 }
 
+.button-nodata {
+  width: 80%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 ::-webkit-scrollbar {
   width: 15px;
 }

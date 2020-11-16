@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Task } from '../models/task';
 import { TaskApiService } from '../services/task-api.service';
+import  Swal  from 'sweetalert2';
 
 @Component({
   selector: 'app-home',
@@ -24,7 +25,7 @@ export class HomeComponent implements OnInit {
     return this.taskApiService.getTasks().subscribe(data => {
       this.dataSource = data;
       this.dataSourceFiltered = this.dataSource;
-    })
+    });
   }
 
   filterTasks(status) {
@@ -32,11 +33,20 @@ export class HomeComponent implements OnInit {
   }
 
   deleteTask(id) {
-    if (window.confirm("Você deseja excluir?")) {
-      this.taskApiService.deleteTask(id).subscribe(data => {
-        this.loadTasks();
-      })
-    }
+    Swal.fire({
+      text: "Você deseja realmente deletar essa tarefa?",
+      confirmButtonText: "Sim",
+      showCancelButton: true
+    }).then((result) => {
+      if (result.isConfirmed) {
+        Swal.fire("Sua tarefa foi deletada com sucesso!")
+        .then(() => {
+          this.taskApiService.deleteTask(id).subscribe(data => {
+            this.loadTasks();
+          });
+        });
+      }
+    });
   }
 
   dataSourceIsEmpty() {

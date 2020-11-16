@@ -49,52 +49,12 @@
       "id": 9
     },
     {
-      "name": "",
-      "email": "",
-      "title": "",
-      "description": "",
-      "status": "concluida",
-      "id": 8
-    },
-    {
       "name": "Thalita",
       "email": "thalita@gmail.com",
       "title": "Reunião",
       "description": "Beca Front End",
       "status": "pendente",
       "id": 9
-    },
-    {
-      "name": "",
-      "email": "",
-      "title": "",
-      "description": "",
-      "status": "",
-      "id": 10
-    },
-    {
-      "name": "",
-      "email": "",
-      "title": "",
-      "description": "",
-      "status": "",
-      "id": 11
-    },
-    {
-      "name": "",
-      "email": "",
-      "title": "",
-      "description": "",
-      "status": "",
-      "id": 12
-    },
-    {
-      "name": "",
-      "email": "",
-      "title": "",
-      "description": "",
-      "status": "",
-      "id": 13
     }
   ]
 }

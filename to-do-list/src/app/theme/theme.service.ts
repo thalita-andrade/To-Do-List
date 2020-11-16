@@ -9,6 +9,8 @@ export class ThemeService {
   private active: Theme = light;
   private availableThemes: Theme[] = [light, dark];
 
+  constructor() { }
+
   getAvailableThemes(): Theme[] {
     return this.availableThemes;
   }
@@ -36,9 +38,7 @@ export class ThemeService {
       document.documentElement.style.setProperty(
         property,
         this.active.properties[property]
-      )
-    })
+      );
+    });
   }
-
-  constructor() { }
 }
