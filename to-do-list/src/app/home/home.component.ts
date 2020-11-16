@@ -33,7 +33,6 @@ export class HomeComponent implements OnInit {
   }
 
   deleteTask(id) {
-    console.log(id)
     Swal.fire({
       text: "Você deseja realmente deletar essa tarefa?",
       confirmButtonText: "Sim",
@@ -43,7 +42,6 @@ export class HomeComponent implements OnInit {
         Swal.fire("Sua tarefa foi deletada com sucesso!")
         .then(() => {
           this.taskApiService.deleteTask(id).subscribe(data => {
-            console.log(id)
             this.loadTasks();
           });
         });
