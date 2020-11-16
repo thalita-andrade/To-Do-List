@@ -11,9 +11,14 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatTableModule } from '@angular/material/table';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
+
+import { MatFormFieldModule} from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { MatCardModule } from '@angular/material/card';
+
 
 @NgModule({
   declarations: [
@@ -31,10 +36,15 @@ import { MatCardModule } from '@angular/material/card';
     MatTableModule,
     MatButtonModule,
     MatIconModule,
+
+    MatFormFieldModule,
+    MatInputModule
+
     MatInputModule,
     ReactiveFormsModule,
     MatSelectModule,
     MatCardModule
+
   ],
   providers: [],
   bootstrap: [AppComponent]
