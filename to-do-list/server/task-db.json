@@ -1,27 +1,11 @@
 {
   "tasks": [
     {
-      "name": "",
-      "email": "",
-      "title": "",
-      "description": "",
-      "status": "pendente",
-      "id": 2
-    },
-    {
-      "name": "",
-      "email": "",
-      "title": "",
-      "description": "",
-      "status": "concluida",
-      "id": 3
-    },
-    {
       "name": "Thalita",
       "email": "thalita@gmail.com",
       "title": "Task 1",
       "description": "Minha primeira tarefa",
-      "status": "pendente",
+      "status": "concluida",
       "id": 4
     },
     {
@@ -47,6 +31,30 @@
       "description": "ldjasdsadfdfsdfsdfsdfsdf",
       "status": "concluida",
       "id": 7
+    },
+    {
+      "name": "",
+      "email": "",
+      "title": "",
+      "description": "",
+      "status": "concluida",
+      "id": 8
+    },
+    {
+      "name": "Thalita",
+      "email": "thalita@gmail.com",
+      "title": "Reunião",
+      "description": "Beca Front End",
+      "status": "pendente",
+      "id": 9
+    },
+    {
+      "name": "",
+      "email": "",
+      "title": "",
+      "description": "",
+      "status": "",
+      "id": 10
     }
   ]
 }
