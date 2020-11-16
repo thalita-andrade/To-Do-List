@@ -2,13 +2,20 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding-top: 20px;
+  padding-top: 5px;
 }
 
 .display-table-home {
   width: 80%;
   display: flex;
   flex-direction: column;
+}
+
+.table-container {
+  width: 100%;
+  display: grid;
+  height: 200px;
+  overflow: auto;
 }
 
 table {
@@ -25,6 +32,7 @@ th {
 
 h2 {
   color: #6142bd;
+  margin: 0 0 8px;
 }
 
 .button-home {
@@ -40,4 +48,28 @@ h2 {
 .icons {
   cursor: pointer;
   color: #6142bd;
+}
+
+.display-filter-button {
+  width: 80%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+::-webkit-scrollbar {
+  width: 15px;
+}
+
+::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 3px grey; 
+}
+
+::-webkit-scrollbar-thumb {
+  background: #beb0e7;
+  border-radius: 2px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #6142bd; 
 }

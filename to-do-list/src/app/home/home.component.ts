@@ -14,29 +14,21 @@ export class HomeComponent implements OnInit {
   constructor( public taskApiService: TaskApiService) {  }
 
   dataSource: Task[];
-  dataPending: Task[];
-  dataConclude: Task[]
+  dataSourceFiltered: Task[];
 
   ngOnInit() { 
-    this.loadTasks()
+    this.loadTasks();
   }
 
   loadTasks() {
     return this.taskApiService.getTasks().subscribe(data => {
-      let pending = data.filter(item => {
-        if(item.status == "pendente") {
-          return item;
-        }
-      })
-      let conclude = data.filter(item => {
-        if(item.status == "concluida") {
-          return item;
-        }
-      })
       this.dataSource = data;
-      this.dataPending = pending;
-      this.dataConclude = conclude;
+      this.dataSourceFiltered = this.dataSource;
     })
+  }
+
+  filterTasks(status) {
+    return this.dataSourceFiltered?.filter(item => item.status == status);
   }
 
   deleteTask(id) {
@@ -45,6 +37,20 @@ export class HomeComponent implements OnInit {
         this.loadTasks();
       })
     }
+  }
+
+  dataSourceIsEmpty() {
+    return this.dataSource?.length == 0;
+  }
+
+  doFilter = (event: Event) => {
+    const filterValue = (event.target as HTMLInputElement).value.toLowerCase();
+
+    this.dataSourceFiltered = this.dataSource.filter(item => {
+      return item.description.toLowerCase().indexOf(filterValue) >= 0 
+      || item.title.toLowerCase().indexOf(filterValue) >= 0
+      || item.name.toLowerCase().indexOf(filterValue) >= 0
+    });
   }
 
 }
