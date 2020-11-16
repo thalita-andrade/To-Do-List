@@ -5,7 +5,7 @@
     <mat-card class="form-container">
         <mat-form-field class="input-form">
             <mat-label>Nome</mat-label>
-            <input type="text" matInput [formControl]="nameFormControl" placeholder="Nome"
+            <input type="text" matInput [formControl]="nameFormControl"
                 [(ngModel)]="taskDetails.name">
             <mat-error *ngIf="nameFormControl.hasError('text') && !nameFormControl.hasError('required')">
                 Por favor insira seu nome
@@ -29,7 +29,7 @@
 
         <mat-form-field class="input-form">
             <mat-label>Título da tarefa</mat-label>
-            <input type="text" matInput [formControl]="titleFormControl" placeholder="Reunião"
+            <input type="text" matInput [formControl]="titleFormControl"
                 [(ngModel)]="taskDetails.title">
             <mat-error *ngIf="titleFormControl.hasError('text') && !titleFormControl.hasError('required')">
                 Por favor insira o título da sua tarefa
@@ -41,7 +41,7 @@
 
         <mat-form-field class="input-form">
             <mat-label>Descrição</mat-label>
-            <textarea type="text" matInput placeholder="Reunião no período da manhã"
+            <textarea type="text" matInput 
                 [(ngModel)]="taskDetails.description"></textarea>
         </mat-form-field>
 
@@ -58,7 +58,7 @@
     <div class="buttons">
         <button mat-raised-button class="button-form" routerLink="/">Cancelar</button>
 
-        <button mat-raised-button class="button-form" (click)="addTask()">Criar</button>
+        <button mat-raised-button class="button-form" (click)="addTask()" [disabled]="!this.nameFormControl.valid || !this.titleFormControl.valid || !this.emailFormControl.valid">Criar</button>
     </div>
 
 </div>

@@ -39,7 +39,6 @@ export class FormComponent implements OnInit {
     Validators.required,
     Validators.email,
   ]);
-
 }
 
 
