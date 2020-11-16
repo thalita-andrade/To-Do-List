@@ -11,8 +11,8 @@
 }
 
 .colors {
-  background-color: #8675b8;
-  color: white;
+  background-color: var(--default-primary);
+  color: var(--default-quarternary);
 }
 
 .font {

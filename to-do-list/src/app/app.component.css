@@ -1,5 +1,5 @@
 .content {
-    background-color: #f1f3f4;
+    background-color: var(--default-quinary);
     width: 100%;
     min-height: calc(100% - 130px);
 }

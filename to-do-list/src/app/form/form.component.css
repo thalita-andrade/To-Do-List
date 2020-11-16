@@ -41,7 +41,7 @@
 
 .link-form {
     text-decoration: none;
-    color: white;
+    color: var(--default-quarternary);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -49,8 +49,8 @@
 }
 
 .button-form {
-    background-color: #8675b8;
-    color: white;
+    background-color: var(--default-primary);
+    color: var(--default-quarternary);
     border: none;
     width: 90px;
     height: 40px;
@@ -64,7 +64,7 @@
 }
     
 .button-form:hover {
-    background-color: #6142bd;
+    background-color: var(--default-secundary);
 }
 
 
