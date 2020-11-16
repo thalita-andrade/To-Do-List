@@ -1,66 +1,45 @@
 .container {
     display: flex;
     justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+
+.title-form {
+    margin-top: 50px;
+    margin-bottom: 20px;
+    color: #6142bd;
 }
 
 .form-container {
     display: flex;
     flex-direction: column;
+    width: 60%;
 }
 
 .buttons {
     display: flex;
-    justify-content: flex-end;
-    margin-top: 10px;
+    margin-top: 20px;
 }
 
 .title-label {
     margin-top: 10px;
 }
 
-.select-form {
-    width: 200px;
-    height: 30px;
-    border-radius: 7px;
-    border: 1px solid #8675b8;
-}
-
 .input-form {
-    width: 400px;
-    height: 30px;
-    border-radius: 7px;
-    border: 1px solid #8675b8;
+    margin-top: 10px;
 }
 
-.textarea-form {
-    width: 400px;
-    height: 60px;
-    border-radius: 7px;
-    border: 1px solid #8675b8;
-}
-
-.link-form {
-    text-decoration: none;
-    color: var(--default-quarternary);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border: 1px solid #8675b8;
+.select-form {
+    width: 40%;
+    margin-top: 10px;
 }
 
 .button-form {
-    background-color: var(--default-primary);
-    color: var(--default-quarternary);
-    border: none;
-    width: 90px;
-    height: 40px;
-    border-radius: 7px;
-    box-shadow: 3px 3px 8px darkgray;
-    cursor: pointer;
+    background-color: #8675b8;
+    color: white;
     font-size: 18px;
-    margin-left: 10px;
-    margin-top: 20px;
-    font-size: 15px;
+    margin-right: 10px;
 }
     
 .button-form:hover {
