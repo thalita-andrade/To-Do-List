@@ -53,7 +53,7 @@ h2 {
 .display-filter-button {
   width: 80%;
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   align-items: center;
 }
 
