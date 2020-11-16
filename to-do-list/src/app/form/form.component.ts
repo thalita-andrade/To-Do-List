@@ -2,6 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { Router } from '@angular/router';
 import { TaskApiService } from '../services/task-api.service';
 import { FormControl, Validators } from '@angular/forms';
+import  Swal  from 'sweetalert2';
 
 @Component({
   selector: 'app-form',
@@ -11,7 +12,9 @@ import { FormControl, Validators } from '@angular/forms';
 
 export class FormComponent implements OnInit {
 
-  @Input() taskDetails = { name:'', email: '', title: '', description: '', status: '' }
+  link: string;
+
+  @Input() taskDetails = { name:'', email: '', title: '', description: '', status: '' };
 
   constructor(
     public taskApi: TaskApiService,
@@ -22,9 +25,32 @@ export class FormComponent implements OnInit {
   }
 
   addTask() {
-    this.taskApi.createTask(this.taskDetails).subscribe((data: {}) => {
-      this.router.navigate([''])
-    })
+    Swal.fire({
+      text: "Você deseja realmente criar essa tarefa?",
+      confirmButtonText: "Sim",
+      showCancelButton: true
+    }).then((result) => {
+      if (result.isConfirmed) {
+        Swal.fire("Sua tarefa foi criada com sucesso!")
+        .then(() => {
+          this.taskApi.createTask(this.taskDetails).subscribe((data: {}) => {
+            this.router.navigate(['']);
+          });
+        });
+      }
+    });
+  }
+
+  cancelAddTask() {
+    Swal.fire({
+      text: "Você deseja cancelar essa tarefa?",
+      confirmButtonText: "Sim",
+      showCancelButton: true
+    }).then((result) => {
+      if (result.isConfirmed) {
+        Swal.fire("Cancelado com sucesso!").then(() => this.router.navigate(['']));
+      }
+    });
   }
 
   nameFormControl = new FormControl('', [

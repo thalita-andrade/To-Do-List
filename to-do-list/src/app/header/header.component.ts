@@ -14,14 +14,7 @@ export class HeaderComponent implements OnInit {
   }
 
   toggleTheme() {
-    console.log("cliquei")
-    if (this.themeService.isDarkTheme()) {
-      console.log("entrou if")
-      this.themeService.setLightTheme();
-    } else {
-      console.log("entrou else")
-      this.themeService.setDarkTheme()
-    }
+    this.themeService.isDarkTheme() ? this.themeService.setLightTheme() : this.themeService.setDarkTheme();
   }
 
 }

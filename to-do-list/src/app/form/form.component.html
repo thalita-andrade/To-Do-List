@@ -56,9 +56,13 @@
     </mat-card>
 
     <div class="buttons">
-        <button mat-raised-button class="button-form" routerLink="/">Cancelar</button>
-
-        <button mat-raised-button class="button-form" (click)="addTask()" [disabled]="!this.nameFormControl.valid || !this.titleFormControl.valid || !this.emailFormControl.valid">Criar</button>
+        <button mat-raised-button class="button-form" (click)="cancelAddTask()">Cancelar</button>
+        <button 
+            mat-raised-button 
+            class="button-form" 
+            (click)="addTask()" 
+            [disabled]="!this.nameFormControl.valid || !this.titleFormControl.valid || !this.emailFormControl.valid"
+        >Criar</button>
     </div>
     <br>
 

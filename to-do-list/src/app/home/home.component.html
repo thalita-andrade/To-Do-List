@@ -3,7 +3,7 @@
     <h2>Cadastre sua primeira tarefa!!</h2>
   </div>
 
-  <div class="display-filter-button">
+  <div [ngClass]="{'display-filter-button': !dataSourceIsEmpty(), 'button-nodata': dataSourceIsEmpty()}">
     <mat-form-field *ngIf="!dataSourceIsEmpty()">
       <input matInput type="text" (keyup)="doFilter($event)" placeholder="Filtrar">
     </mat-form-field>
