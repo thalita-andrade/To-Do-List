@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { Task } from '../models/task';
 import { TaskApiService } from '../services/task-api.service';
 import  Swal  from 'sweetalert2';
-import { ThemeService } from '../theme/theme.service';
 import { Alert } from '../alert/alert';
 
 @Component({
@@ -14,7 +13,7 @@ export class HomeComponent implements OnInit {
 
   displayedColumns: string[] = ["name", "title", "description", "status", "edit", "delete"];
   
-  constructor( private taskApiService: TaskApiService, private themeService: ThemeService) {  }
+  constructor( private taskApiService: TaskApiService) {  }
 
   dataSource: Task[];
   dataSourceFiltered: Task[];
@@ -36,31 +35,17 @@ export class HomeComponent implements OnInit {
   }
 
   deleteTask(id) {
-    if(this.themeService.isDarkTheme()) {
-      Swal.fire(this.alert.cssAlertFirst(this.alert.objDarkTheme, this.alert.objTexts.deleteTaskDark))
-      .then((result) => {
-        if (result.isConfirmed) {
-          Swal.fire(this.alert.cssAlertSecond(this.alert.objDarkTheme, this.alert.objTexts.deleteSuccessDark))
-          .then(() => {
-            this.taskApiService.deleteTask(id).subscribe(data => {
-              this.loadTasks();
-            });
+    Swal.fire(this.alert.cssAlertFirst("Você deseja realmente deletar essa tarefa?"))
+    .then((result) => {
+      if (result.isConfirmed) {
+        Swal.fire(this.alert.cssAlertSecond("Sua tarefa foi deletada com sucesso!"))
+        .then(() => {
+          this.taskApiService.deleteTask(id).subscribe(data => {
+            this.loadTasks();
           });
-        }
-      });
-    } else {
-      Swal.fire(this.alert.cssAlertFirst(this.alert.objLightTheme, this.alert.objTexts.deleteTaskLight))
-      .then((result) => {
-        if (result.isConfirmed) {
-          Swal.fire(this.alert.cssAlertSecond(this.alert.objLightTheme, this.alert.objTexts.deleteSuccessLight))
-          .then(() => {
-            this.taskApiService.deleteTask(id).subscribe(data => {
-              this.loadTasks();
-            });
-          });
-        }
-      });
-    }
+        });
+      }
+    });
   }
 
   dataSourceIsEmpty() {
