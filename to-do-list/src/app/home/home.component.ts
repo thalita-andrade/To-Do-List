@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Task } from '../models/task';
 import { TaskApiService } from '../services/task-api.service';
 import  Swal  from 'sweetalert2';
+import { ThemeService } from '../theme/theme.service';
+import { Alert } from '../alert/alert';
 
 @Component({
   selector: 'app-home',
@@ -12,10 +14,11 @@ export class HomeComponent implements OnInit {
 
   displayedColumns: string[] = ["name", "title", "description", "status", "edit", "delete"];
   
-  constructor( public taskApiService: TaskApiService) {  }
+  constructor( private taskApiService: TaskApiService, private themeService: ThemeService) {  }
 
   dataSource: Task[];
   dataSourceFiltered: Task[];
+  alert = new Alert;
 
   ngOnInit() { 
     this.loadTasks();
@@ -33,20 +36,31 @@ export class HomeComponent implements OnInit {
   }
 
   deleteTask(id) {
-    Swal.fire({
-      text: "Você deseja realmente deletar essa tarefa?",
-      confirmButtonText: "Sim",
-      showCancelButton: true
-    }).then((result) => {
-      if (result.isConfirmed) {
-        Swal.fire("Sua tarefa foi deletada com sucesso!")
-        .then(() => {
-          this.taskApiService.deleteTask(id).subscribe(data => {
-            this.loadTasks();
+    if(this.themeService.isDarkTheme()) {
+      Swal.fire(this.alert.cssAlertFirst(this.alert.objDarkTheme, this.alert.objTexts.deleteTaskDark))
+      .then((result) => {
+        if (result.isConfirmed) {
+          Swal.fire(this.alert.cssAlertSecond(this.alert.objDarkTheme, this.alert.objTexts.deleteSuccessDark))
+          .then(() => {
+            this.taskApiService.deleteTask(id).subscribe(data => {
+              this.loadTasks();
+            });
           });
-        });
-      }
-    });
+        }
+      });
+    } else {
+      Swal.fire(this.alert.cssAlertFirst(this.alert.objLightTheme, this.alert.objTexts.deleteTaskLight))
+      .then((result) => {
+        if (result.isConfirmed) {
+          Swal.fire(this.alert.cssAlertSecond(this.alert.objLightTheme, this.alert.objTexts.deleteSuccessLight))
+          .then(() => {
+            this.taskApiService.deleteTask(id).subscribe(data => {
+              this.loadTasks();
+            });
+          });
+        }
+      });
+    }
   }
 
   dataSourceIsEmpty() {
