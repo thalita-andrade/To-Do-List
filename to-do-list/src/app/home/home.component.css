@@ -83,10 +83,6 @@ h2 {
   color: var(--default-octonary) !important;
 }
 
-::ng-deep .mat-focus .mat-form-field-label {
-  color: var(--default-octonary) !important;
-}
-
 ::ng-deep .mat-form-field-underline {
   background-color: var(--default-octonary) !important;
 } 
