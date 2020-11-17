@@ -11,7 +11,7 @@ import { Alert } from '../alert/alert';
 })
 export class HomeComponent implements OnInit {
 
-  displayedColumns: string[] = ["name", "title", "description", "status", "edit", "delete"];
+  displayedColumns: string[] = ["title", "description", "name", "status", "edit", "delete"];
   
   constructor( private taskApiService: TaskApiService) {  }
 
