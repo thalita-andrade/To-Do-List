@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { TaskApiService } from '../services/task-api.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import  Swal  from 'sweetalert2';
+import { Alert } from '../alert/alert';
 
 @Component({
   selector: 'app-edit',
@@ -12,11 +13,12 @@ export class EditComponent implements OnInit {
 
   id = this.actRout.snapshot.params['id'];
   taskUpdate: any = {};
+  alert = new Alert;
 
   constructor(
     public taskApi: TaskApiService,
     public actRout: ActivatedRoute,
-    public router: Router 
+    public router: Router
   ) { }
 
   ngOnInit() {
@@ -32,29 +34,25 @@ export class EditComponent implements OnInit {
   }
 
   updateTask() {
-    Swal.fire({
-      text: "Você deseja realmente editar?",
-      confirmButtonText: "Sim",
-      showCancelButton: true
-    }).then((result) => {
+    Swal.fire(this.alert.cssAlertFirst("Você deseja realmente editar?"))
+    .then((result) => {
       if (result.isConfirmed && this.taskUpdate.status === "concluida") {
-        Swal.fire("Sua tarefa foi editada e concluida com sucesso!").then(() => this.update());
+        Swal.fire(this.alert.cssAlertSecond("Sua tarefa foi editada e concluida com sucesso!"))
+        .then(() => this.update());
       } else {
-        Swal.fire("Sua tarefa foi editada com sucesso!").then(() => this.update());
+        Swal.fire(this.alert.cssAlertSecond("Sua tarefa foi editada com sucesso!"))
+        .then(() => this.update());
       }
     });
   }
 
   cancelEditTask() {
-    Swal.fire({
-      text: "Você deseja cancelar as alterações?",
-      confirmButtonText: "Sim",
-      showCancelButton: true
-    }).then((result) => {
+    Swal.fire(this.alert.cssAlertFirst("Você deseja cancelar as alterações?"))
+    .then((result) => {
       if (result.isConfirmed) {
-        Swal.fire("Cancelado com sucesso!").then(() => this.router.navigate(['']));
+        Swal.fire(this.alert.cssAlertSecond("Cancelado com sucesso!"))
+        .then(() => this.router.navigate(['']));
       }
     });
   }
-
 }

@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { TaskApiService } from '../services/task-api.service';
 import { FormControl, Validators } from '@angular/forms';
 import  Swal  from 'sweetalert2';
+import { Alert } from '../alert/alert';
 
 @Component({
   selector: 'app-form',
@@ -13,6 +14,7 @@ import  Swal  from 'sweetalert2';
 export class FormComponent implements OnInit {
 
   link: string;
+  alert = new Alert;
 
   @Input() taskDetails = { name:'', email: '', title: '', description: '', status: '' };
 
@@ -25,13 +27,10 @@ export class FormComponent implements OnInit {
   }
 
   addTask() {
-    Swal.fire({
-      text: "Você deseja realmente criar essa tarefa?",
-      confirmButtonText: "Sim",
-      showCancelButton: true
-    }).then((result) => {
+    Swal.fire(this.alert.cssAlertFirst("Você deseja realmente criar essa tarefa?"))
+    .then((result) => {
       if (result.isConfirmed) {
-        Swal.fire("Sua tarefa foi criada com sucesso!")
+        Swal.fire(this.alert.cssAlertSecond("Sua tarefa foi criada com sucesso!"))
         .then(() => {
           this.taskApi.createTask(this.taskDetails).subscribe((data: {}) => {
             this.router.navigate(['']);
@@ -42,13 +41,11 @@ export class FormComponent implements OnInit {
   }
 
   cancelAddTask() {
-    Swal.fire({
-      text: "Você deseja cancelar essa tarefa?",
-      confirmButtonText: "Sim",
-      showCancelButton: true
-    }).then((result) => {
+    Swal.fire(this.alert.cssAlertFirst("Você deseja cancelar essa tarefa?"))
+    .then((result) => {
       if (result.isConfirmed) {
-        Swal.fire("Cancelado com sucesso!").then(() => this.router.navigate(['']));
+        Swal.fire(this.alert.cssAlertSecond("Cancelado com sucesso!"))
+        .then(() => this.router.navigate(['']));
       }
     });
   }

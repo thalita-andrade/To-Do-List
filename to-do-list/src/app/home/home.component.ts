@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Task } from '../models/task';
 import { TaskApiService } from '../services/task-api.service';
 import  Swal  from 'sweetalert2';
+import { Alert } from '../alert/alert';
 
 @Component({
   selector: 'app-home',
@@ -12,10 +13,11 @@ export class HomeComponent implements OnInit {
 
   displayedColumns: string[] = ["name", "title", "description", "status", "edit", "delete"];
   
-  constructor( public taskApiService: TaskApiService) {  }
+  constructor( private taskApiService: TaskApiService) {  }
 
   dataSource: Task[];
   dataSourceFiltered: Task[];
+  alert = new Alert;
 
   ngOnInit() { 
     this.loadTasks();
@@ -33,13 +35,10 @@ export class HomeComponent implements OnInit {
   }
 
   deleteTask(id) {
-    Swal.fire({
-      text: "Você deseja realmente deletar essa tarefa?",
-      confirmButtonText: "Sim",
-      showCancelButton: true
-    }).then((result) => {
+    Swal.fire(this.alert.cssAlertFirst("Você deseja realmente deletar essa tarefa?"))
+    .then((result) => {
       if (result.isConfirmed) {
-        Swal.fire("Sua tarefa foi deletada com sucesso!")
+        Swal.fire(this.alert.cssAlertSecond("Sua tarefa foi deletada com sucesso!"))
         .then(() => {
           this.taskApiService.deleteTask(id).subscribe(data => {
             this.loadTasks();
