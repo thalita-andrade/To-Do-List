@@ -45,6 +45,22 @@
     background-color: var(--default-secundary);
 }
 
+::ng-deep .mat-form-field-label {
+    color: var(--default-primary) !important;
+}
 
+::ng-deep .mat-focus .mat-form-field-label {
+    color: var(--default-primary) !important;
+}
 
+::ng-deep .mat-form-field-underline {
+    background-color: var(--default-primary) !important;
+} 
 
+::ng-deep .mat-form-field-ripple {
+    background-color: var(--default-primary) !important;
+}
+
+::ng-deep .mat-input-element {
+    color: var(--default-primary) !important;
+}

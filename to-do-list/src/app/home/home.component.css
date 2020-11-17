@@ -76,5 +76,25 @@ h2 {
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: var(--default-secundary); 
+  background: var(--default-septenary); 
+}
+
+::ng-deep .mat-form-field-label {
+  color: var(--default-octonary) !important;
+}
+
+::ng-deep .mat-focus .mat-form-field-label {
+  color: var(--default-octonary) !important;
+}
+
+::ng-deep .mat-form-field-underline {
+  background-color: var(--default-octonary) !important;
+} 
+
+::ng-deep .mat-form-field-ripple {
+ background-color: var(--default-octonary) !important;
+}
+
+::ng-deep .mat-input-element {
+  color: var(--default-octonary) !important;
 }
